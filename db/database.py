@@ -99,3 +99,4 @@ class Database:
             error_message = '데이터베이스 Error ( {} )'.format(hasattr(err, 'message') and err.message or err)
             logging.error(error_message)
             return abort(500, description="DATABASE_ERROR")
+#
