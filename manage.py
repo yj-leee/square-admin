@@ -7,7 +7,7 @@ if __name__ == "__main__":
 
     app.debug = True
 
-    server = Server(host="0.0.0.0", port=9090)
+    server = Server(host="0.0.0.0", port=5000)
 
     manager = Manager(app)
     manager.add_command("runserver", server)
