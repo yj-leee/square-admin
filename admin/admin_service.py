@@ -23,7 +23,7 @@ class AdminService:
                 return abort(400, description="EXISTS_ADMIN")
 
             validate_keys = [
-                'admin_class_cd'
+                'admin_status_cd'
                 , 'email'
                 , 'password'
             ]
@@ -35,15 +35,19 @@ class AdminService:
 
             if len(data['email'].strip()) == 0:
                 return abort(400, description="INVALID_DATA")
+            param_data['email'] = data['email']
 
             if len(data['password'].strip()) == 0:
                 return abort(400, description="INVALID_DATA")
+            param_data['password'] = data['password']
 
-            if len(data['admin_class_cd'].strip()) == 0:
+            if len(data['admin_status_cd'].strip()) == 0:
                 return abort(400, description="INVALID_DATA")
+            param_data['admin_status_cd'] = data['admin_status_cd']
 
             if len(data['admin_grade_cd'].strip()) == 0:
                 return abort(400, description="INVALID_DATA")
+            param_data['admin_grade_cd'] = data['admin_grade_cd']
 
             param_data['regist_date'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             param_data['update_date'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')

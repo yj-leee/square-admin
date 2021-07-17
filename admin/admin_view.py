@@ -41,3 +41,7 @@ class AdminView:
             admin_service.admin_signup(data)
 
             return jsonify({'message': "SUCCESS"})
+
+        @app.route('/')
+        def hello():
+            return "Hello World!"

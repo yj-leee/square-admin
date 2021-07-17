@@ -4,7 +4,8 @@ from datetime import datetime
 from flask import Flask
 from config import DATABASES
 from logging.handlers import RotatingFileHandler
-
+from admin.admin_service import AdminService
+from admin.admin_view import AdminView
 
 def get_db_config():
     dbconfig = {
@@ -17,9 +18,18 @@ def get_db_config():
 
     return dbconfig
 
+class Services:
+    pass
 
 def create_app():
     app = Flask(__name__)
+
+    # Service Layer
+    services = Services
+    services.admin_service = AdminService()
+
+    # endpoint
+    AdminView.create_endpoint(app, services)
 
     # logging
     if not os.path.exists('log'):
